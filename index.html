@@ -27,7 +27,7 @@
     }
 
     body {
-      background-color: #060913; /* Deep Night Sky */
+      background-color: #060913; 
       font-family: 'Press Start 2P', monospace;
       display: flex;
       justify-content: center;
@@ -48,7 +48,6 @@
       justify-content: space-between;
     }
 
-    /* Transition Handler */
     .fade-item {
       transition: opacity 1s ease;
     }
@@ -60,17 +59,14 @@
       filter: drop-shadow(0 0 15px rgba(255,255,255,0.15)) brightness(0.7);
     }
 
-    /* FRONT CANVAS - Confetti & Hearts */
     canvas#particles {
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
       pointer-events: none; z-index: 20;
     }
 
-    /* TOP UI */
     .top-bar {
       display: flex; justify-content: space-between; align-items: center;
-      padding: 12px; z-index: 25;
+      padding: 12px; z-index: 25; position: relative;
     }
 
     .pixel-btn {
@@ -79,7 +75,7 @@
     }
     .pixel-btn:active { transform: translate(2px, 2px); box-shadow: 0px 0px 0px #000000; }
 
-    /* SPARKLING PINK BANNER */
+    /* Banner & Sparkles */
     .banner-container {
       position: absolute; top: 65px; left: 0; width: 100%; z-index: 5;
       display: flex; flex-direction: column; align-items: center; gap: 12px; pointer-events: none;
@@ -105,13 +101,12 @@
     .banner-row:nth-child(3) .pennant:nth-child(odd) { transform: translateY(2px) rotate(-2deg); }
     .banner-row:nth-child(3) .pennant:nth-child(even) { transform: translateY(-2px) rotate(4deg); }
 
-    /* CSS Cross Stars around Banner */
     .sparkle { position: absolute; width: 14px; height: 14px; animation: twinkle 1s infinite alternate; }
     .sparkle::before, .sparkle::after { content: ''; position: absolute; background: #fff; border-radius: 2px; box-shadow: 0 0 4px #ff4081; }
     .sparkle::before { width: 100%; height: 2px; top: 6px; left: 0; }
     .sparkle::after { width: 2px; height: 100%; top: 0; left: 6px; }
 
-    /* LAYER 1 & 2: OUTSIDE SCENERY (DEEP BACKGROUND) */
+    /* Layer 1: Deep Space Background */
     #star-field {
       position: absolute; top: 0; left: 0; width: 2px; height: 2px;
       background: #fff; border-radius: 50%; z-index: 1; animation: twinkle 3s infinite alternate;
@@ -119,55 +114,58 @@
     
     .outside-scenery {
       position: absolute; bottom: 0; left: 0; width: 100%; height: 100%;
-      z-index: 2; /* Keeps grass behind the couple */
+      z-index: 2; opacity: 0; pointer-events: none; transition: opacity 1.5s ease;
     }
+    body.outside-mode .outside-scenery { opacity: 1; pointer-events: auto; }
 
     .grass-hill {
-      position: absolute; bottom: 0; left: -10%; width: 120%; height: 140px;
+      position: absolute; bottom: 0; left: -20%; width: 140%; height: 160px;
       background: #143019; border-top: 4px solid #1c4423; border-radius: 50% 50% 0 0;
     }
 
-    /* MOTORCYCLE */
     .motorcycle {
-      position: absolute; bottom: 45px; left: 15%; width: 75px; height: 40px;
-      cursor: pointer; transition: transform 0.2s ease; z-index: 3;
+      position: absolute; bottom: 45px; left: 10%; width: 90px; height: 50px;
+      cursor: pointer; transition: transform 0.2s ease; z-index: 15;
     }
     .motorcycle:hover { transform: scale(1.05); }
-    
-    .bike-wheel { position: absolute; bottom: 0; width: 22px; height: 22px; border-radius: 50%; border: 4px solid #455a64; background: #111; }
+    .bike-wheel { position: absolute; bottom: 0; width: 26px; height: 26px; border-radius: 50%; border: 4px solid #455a64; background: #111; }
     .bike-wheel.front { right: 0; } .bike-wheel.back { left: 0; }
-    .bike-body { position: absolute; top: 12px; left: 14px; width: 42px; height: 10px; background: #4e342e; border-radius: 4px; }
-    .bike-seat { position: absolute; top: 8px; left: 10px; width: 24px; height: 6px; background: #2b1a17; border-radius: 2px; }
-    .bike-handlebars { position: absolute; top: 2px; right: 18px; width: 4px; height: 14px; background: #222; transform: rotate(25deg); }
-    .bike-headlight { position: absolute; top: 10px; right: -4px; width: 8px; height: 12px; background: #fff59d; border-radius: 4px; box-shadow: 8px 0 15px #fff59d; }
+    .bike-body { position: absolute; top: 14px; left: 16px; width: 48px; height: 12px; background: #4e342e; border-radius: 4px; }
+    .bike-seat { position: absolute; top: 10px; left: 12px; width: 28px; height: 6px; background: #2b1a17; border-radius: 2px; }
+    .bike-handlebars { position: absolute; top: 2px; right: 20px; width: 4px; height: 16px; background: #222; transform: rotate(25deg); }
+    .bike-headlight { position: absolute; top: 12px; right: -4px; width: 8px; height: 12px; background: #fff59d; border-radius: 4px; box-shadow: 8px 0 15px #fff59d; }
 
-    /* LAYER 3: ROOM BACKGROUND WALL/FLOOR */
+    /* Layer 3: Room Wallpaper */
     .room-bg {
       position: absolute; top: 0; left: 0; width: 100%; height: 100%;
       background: linear-gradient(to bottom, var(--bg-wall) 68%, var(--bg-floor) 68%); z-index: 4;
     }
 
-    /* LAYER 4: WALL DECORATIONS */
-    .pixel-window {
-      position: absolute; top: 220px; left: 12%; width: 64px; height: 84px;
-      background: #0b1021; border: 4px solid #4a3b32; box-shadow: inset 0 0 10px rgba(0,0,0,0.6), 2px 2px 0px rgba(0,0,0,0.1);
-      z-index: 5; overflow: hidden; cursor: pointer; transition: transform 0.1s ease;
+    /* Layer 4: Absolute Coordinates Room Layout */
+    .room-scene {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10;
     }
-    .pixel-window:hover { transform: scale(1.04); }
+    .interactive-item { cursor: pointer; transition: transform 0.1s ease; }
+    .interactive-item:hover { transform: scale(1.04); }
+
+    /* Window (Right Side) */
+    .pixel-window {
+      position: absolute; top: 180px; right: 10%; width: 64px; height: 84px;
+      background: #0b1021; border: 4px solid #4a3b32; box-shadow: inset 0 0 10px rgba(0,0,0,0.6), 2px 2px 0px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
     .pixel-window::before { content: ''; position: absolute; top: 50%; left: 0; width: 100%; height: 4px; background: #4a3b32; transform: translateY(-50%); z-index: 2; }
     .pixel-window::after { content: ''; position: absolute; top: 0; left: 50%; width: 4px; height: 100%; background: #4a3b32; transform: translateX(-50%); z-index: 2; }
-    
-    /* View through the window */
     .window-grass { position: absolute; bottom: 0; left: 0; width: 100%; height: 18px; background: #143019; border-top: 2px solid #1c4423; z-index: 1; }
+    
     .star { position: absolute; background: #ffffff; width: 2px; height: 2px; animation: twinkle 1.5s infinite alternate; }
     .star-1 { top: 10px; left: 12px; animation-delay: 0s; } .star-2 { top: 20px; left: 40px; animation-delay: 0.7s; width: 3px; height: 3px; }
     .star-3 { top: 55px; left: 15px; animation-delay: 1.2s; } .star-4 { top: 65px; left: 45px; animation-delay: 0.3s; }
 
-    /* Wall-Mounted Truffle Guitar */
+    /* Guitar Mounted (Middle Right) */
     .guitar-container {
-      position: absolute; top: 28%; left: 10%; z-index: 5; cursor: pointer; transition: transform 0.1s ease;
+      position: absolute; top: 160px; right: 35%; 
     }
-    .guitar-container:hover { transform: scale(1.04); }
     .guitar-peg { width: 4px; height: 4px; background: #3e2723; border-radius: 50%; margin: 0 auto; }
     .guitar-string { width: 2px; height: 12px; background: #777; margin: 0 auto; }
     .guitar { width: 22px; height: 56px; transform: rotate(15deg); margin-top: -2px; }
@@ -175,55 +173,46 @@
     .guitar-body { width: 22px; height: 34px; background: #4e342e; border: 2px solid #1f0000; border-radius: 8px 8px 12px 12px; display: flex; justify-content: center; align-items: center; }
     .sound-hole { width: 6px; height: 6px; background: #121212; border-radius: 50%; margin-top: -4px; }
 
-    /* FRONT FACING DOOR */
+    /* Left Side Door */
+    .door-wrapper {
+      position: absolute; bottom: 65px; left: 8%; perspective: 400px; z-index: 8;
+    }
     .door {
-      position: absolute; bottom: 32%; right: 28%; width: 52px; height: 95px;
-      background: #5d4037; border: 4px solid #3e2723; cursor: pointer; transition: transform 0.1s ease; z-index: 5;
+      width: 48px; height: 110px; background: #5d4037; border: 4px solid #3e2723;
+      transform-origin: left center; transform: rotateY(25deg); transition: transform 0.2s ease; position: relative;
     }
-    .door:hover { transform: scale(1.04); }
-    .door-top-panel { position: absolute; top: 6px; left: 6px; right: 6px; height: 35px; border: 2px solid #4e342e; }
-    .door-bottom-panel { position: absolute; bottom: 6px; left: 6px; right: 6px; height: 35px; border: 2px solid #4e342e; }
-    .door-knob { position: absolute; top: 50%; left: 6px; width: 6px; height: 6px; background: #ffca28; border-radius: 50%; box-shadow: 1px 1px 0px #3e2723; }
+    .door-wrapper:hover .door { transform: rotateY(15deg); }
+    .door-top-panel { position: absolute; top: 6px; left: 4px; right: 4px; height: 40px; border: 2px solid #4e342e; }
+    .door-bottom-panel { position: absolute; bottom: 6px; left: 4px; right: 4px; height: 40px; border: 2px solid #4e342e; }
+    .door-knob { position: absolute; top: 50%; right: 4px; width: 6px; height: 6px; background: #ffca28; border-radius: 50%; box-shadow: 1px 1px 0px #3e2723; }
 
-    /* LAYER 5: ROOM FLOOR SCENE */
-    .room-scene {
-      position: relative; flex: 1; display: flex; justify-content: center; align-items: flex-end;
-      padding: 0 14px 18px 14px; gap: 16px; z-index: 10; /* Forces couple strictly above the grass and stars */
-    }
-
-    .interactive-item { cursor: pointer; transition: transform 0.1s ease; position: relative; }
-    .interactive-item:hover { transform: scale(1.04); }
-
-    /* Floor Gift */
-    .left-items { display: flex; align-items: flex-end; z-index: 10; margin-bottom: -2px; }
+    /* Left Gift Box */
+    .gift-box-container { position: absolute; bottom: 20px; left: 16%; z-index: 12; }
     .gift-box { width: 28px; height: 28px; background: #4fc3f7; border: 3px solid #0277bd; position: relative; }
     .gift-ribbon-v { position: absolute; left: 8px; top: 0; width: 6px; height: 100%; background: #ffeb3b; border-left: 2px solid #fbc02d; border-right: 2px solid #fbc02d; }
     .gift-ribbon-h { position: absolute; top: 8px; left: 0; width: 100%; height: 6px; background: #ffeb3b; border-top: 2px solid #fbc02d; border-bottom: 2px solid #fbc02d; }
     .gift-lid { position: absolute; top: -6px; left: -4px; width: 30px; height: 8px; background: #4fc3f7; border: 3px solid #0277bd; z-index: 2; transition: transform 0.2s ease, opacity 0.2s ease; }
     .gift-box.open .gift-lid { transform: translateY(-15px) rotate(20deg); opacity: 0; }
 
-    /* Couple Sprites */
-    .couple-wrapper { flex: 0 0 auto; text-align: center; animation: idleBob 1.4s ease-in-out infinite alternate; z-index: 10; }
+    /* Couple centered on floor */
+    .couple-position {
+      position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); z-index: 12;
+    }
+    .couple-wrapper { animation: idleBob 1.4s ease-in-out infinite alternate; }
     .couple-img { max-height: 270px; width: auto; display: block; transition: filter 1s ease; }
     @keyframes idleBob { 0% { transform: translateY(0); } 100% { transform: translateY(-4px); } }
 
-    /* Furniture & Side Table */
-    .furniture-group { display: flex; flex-direction: column; align-items: center; flex: 0 0 auto; z-index: 10; }
+    /* Right side table */
+    .furniture-group { position: absolute; bottom: 15px; right: 8%; z-index: 12; display: flex; flex-direction: column; align-items: center; }
     .table-top-items { display: flex; align-items: flex-end; gap: 8px; margin-bottom: -2px; }
-
-    /* Scaled Down Flowers */
     .vase-img { max-height: 70px; width: auto; display: block; transform: translateY(9px); position: relative; z-index: 2; }
-
-    /* Chocolate Truffle Cake */
     .cake-container {
-      width: 72px; height: 44px;
-      background: linear-gradient(to bottom, #4e342e 0%, #4e342e 30%, #3e2723 30%, #3e2723 70%, #2b1a17 70%, #2b1a17 100%);
+      width: 72px; height: 44px; background: linear-gradient(to bottom, #4e342e 0%, #4e342e 30%, #3e2723 30%, #3e2723 70%, #2b1a17 70%, #2b1a17 100%);
       border: 3px solid #1f0000; border-radius: 6px; border-bottom: 5px solid #cfd8dc;
-      position: relative; display: flex; justify-content: center; cursor: pointer; box-shadow: 0px 2px 0px rgba(0,0,0,0.2);
+      position: relative; display: flex; justify-content: center; box-shadow: 0px 2px 0px rgba(0,0,0,0.2);
     }
     .cake-frosting { position: absolute; top: 0; left: 0; width: 100%; height: 14px; background: #271300; border-radius: 4px 4px 0 0; border-bottom: 3px dotted #180900; }
     .cake-container::before { content: ''; position: absolute; width: 4px; height: 4px; background: #ffca28; top: 18px; left: 10px; box-shadow: 18px 6px 0 #a1887f, 36px -2px 0 #ffca28, 10px 10px 0 #ffca28, 28px 12px 0 #a1887f, 46px 2px 0 #ffca28; z-index: 1; }
-    
     .candle { position: absolute; top: -14px; width: 6px; height: 14px; background: #81d4fa; border: 2px solid #000000; z-index: 2; }
     .candle-1 { left: 20px; } .candle-2 { right: 20px; }
     .flame { position: absolute; top: -9px; left: -2px; width: 6px; height: 8px; background: #ffeb3b; border: 1px solid #ff5722; animation: flicker 0.3s infinite alternate; }
@@ -234,9 +223,9 @@
     @keyframes twinkle { 0% { opacity: 0.2; } 100% { opacity: 1; } }
     @keyframes flicker { 0% { transform: scale(1); } 100% { transform: scale(1.2) translateY(-1px); } }
 
-    /* DIALOGUE UI */
-    .dialogue-wrapper { padding: 12px; z-index: 25; }
-    .dialogue-box { background: var(--dialogue-bg); border: 4px solid var(--dialogue-border); border-radius: 6px; display: flex; gap: 12px; padding: 10px; min-height: 100px; box-shadow: 0 4px 0 #000; }
+    /* Dialogue Layer */
+    .dialogue-wrapper { position: absolute; bottom: 12px; left: 12px; right: 12px; z-index: 30; }
+    .dialogue-box { background: var(--dialogue-bg); border: 4px solid var(--dialogue-border); border-radius: 6px; display: flex; gap: 12px; padding: 10px; min-height: 100px; box-shadow: 0 4px 0 #000; cursor: pointer; }
     .portrait { width: 60px; height: 60px; border: 2px solid #ffffff; background: #000; flex-shrink: 0; overflow: hidden; }
     .portrait img { width: 100%; height: 100%; object-fit: cover; }
     .dialogue-content { flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
@@ -250,8 +239,8 @@
 
 <div id="game-container">
   
-  <!-- BACKGROUND LAYER -->
   <div id="star-field"></div>
+  
   <div class="outside-scenery">
     <div class="grass-hill"></div>
     <div class="motorcycle" onclick="goInside()">
@@ -264,10 +253,7 @@
     </div>
   </div>
 
-  <!-- ROOM WALL/FLOOR LAYER -->
   <div class="room-bg fade-item"></div>
-
-  <!-- FRONT LAYER CANVAS -->
   <canvas id="particles"></canvas>
 
   <div class="top-bar">
@@ -275,7 +261,6 @@
     <button class="pixel-btn fade-item" onclick="triggerConfetti()">Celebrate</button>
   </div>
 
-  <!-- WALL DECORATIONS -->
   <div class="banner-container fade-item">
     <div class="sparkle" style="top: -5px; left: 15%;"></div>
     <div class="sparkle" style="top: 20px; right: 15%;"></div>
@@ -291,32 +276,34 @@
     </div>
   </div>
 
-  <div class="pixel-window fade-item" onclick="interactWindow()">
-    <div class="star star-1"></div>
-    <div class="star star-2"></div>
-    <div class="star star-3"></div>
-    <div class="star star-4"></div>
-    <div class="window-grass"></div>
-  </div>
-
-  <div class="guitar-container fade-item" onclick="interactGuitar()">
-    <div class="guitar-peg"></div>
-    <div class="guitar-string"></div>
-    <div class="guitar">
-      <div class="guitar-neck"></div>
-      <div class="guitar-body"><div class="sound-hole"></div></div>
-    </div>
-  </div>
-
-  <div class="door fade-item" onclick="goOutside()">
-    <div class="door-top-panel"></div>
-    <div class="door-bottom-panel"></div>
-    <div class="door-knob"></div>
-  </div>
-
-  <!-- FLOOR SCENE -->
   <div class="room-scene">
-    <div class="left-items fade-item">
+    
+    <div class="door-wrapper fade-item interactive-item" onclick="goOutside()">
+      <div class="door">
+        <div class="door-top-panel"></div>
+        <div class="door-bottom-panel"></div>
+        <div class="door-knob"></div>
+      </div>
+    </div>
+
+    <div class="pixel-window fade-item interactive-item" onclick="interactWindow()">
+      <div class="star star-1"></div>
+      <div class="star star-2"></div>
+      <div class="star star-3"></div>
+      <div class="star star-4"></div>
+      <div class="window-grass"></div>
+    </div>
+
+    <div class="guitar-container fade-item interactive-item" onclick="interactGuitar()">
+      <div class="guitar-peg"></div>
+      <div class="guitar-string"></div>
+      <div class="guitar">
+        <div class="guitar-neck"></div>
+        <div class="guitar-body"><div class="sound-hole"></div></div>
+      </div>
+    </div>
+
+    <div class="gift-box-container fade-item">
       <div class="gift-box interactive-item" id="gift" onclick="interactGift()">
         <div class="gift-lid"></div>
         <div class="gift-ribbon-v"></div>
@@ -324,8 +311,10 @@
       </div>
     </div>
 
-    <div class="couple-wrapper interactive-item" onclick="interactCouple()">
-      <img src="assets/couple.png" alt="San and Ria" class="couple-img" id="couple-sprite" />
+    <div class="couple-position">
+      <div class="couple-wrapper interactive-item" onclick="interactCouple()">
+        <img src="assets/couple.png" alt="San and Ria" class="couple-img" id="couple-sprite" />
+      </div>
     </div>
 
     <div class="furniture-group fade-item">
@@ -333,7 +322,6 @@
         <div class="interactive-item" onclick="interactFlowers()">
           <img src="assets/flowers.png" alt="Bouquet" class="vase-img" />
         </div>
-
         <div class="cake-container interactive-item" onclick="blowCandles()">
           <div class="candle candle-1"><div class="flame" id="flame1"></div></div>
           <div class="candle candle-2"><div class="flame" id="flame2"></div></div>
@@ -343,6 +331,7 @@
       </div>
       <div class="table-stand"></div>
     </div>
+
   </div>
 
   <div class="dialogue-wrapper" onclick="advanceDialogue()">
@@ -379,7 +368,6 @@
     gift: { speaker: "San", portrait: "assets/san.png", text: "I packed this one with just as much love as the care package with the cookies I sent for our anniversary." }
   };
 
-  // Generate Deep Background Stars ONCE
   window.onload = function() {
     let shadow = '';
     for (let i = 0; i < 120; i++) {
@@ -456,7 +444,11 @@
   }
 
   function advanceDialogue() {
-    interactCouple();
+    if (isOutside) {
+      goInside();
+    } else {
+      interactCouple();
+    }
   }
 
   /* Audio Controls */
@@ -472,7 +464,7 @@
     }
   }
 
-  /* Particle Canvas Engine for Confetti/Hearts */
+  /* Particles */
   const canvas = document.getElementById("particles");
   const ctx = canvas.getContext("2d");
   let particles = [];
