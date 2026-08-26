@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Happy 25th Birthday Ria!</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -62,6 +62,9 @@
     .sparkle::before { width: 100%; height: 2px; top: 6px; left: 0; }
     .sparkle::after { width: 2px; height: 100%; top: 0; left: 6px; }
 
+    /* Separation Line Below Banner */
+    .room-trim { position: absolute; top: 165px; left: 0; width: 100%; height: 4px; background: #d7ccc8; border-top: 2px solid #bcaaa4; border-bottom: 2px solid #bcaaa4; z-index: 4; }
+
     /* Outside Elements */
     .outside-scenery { position: absolute; bottom: 0; left: 0; width: 100%; height: 100%; z-index: 2; opacity: 0; pointer-events: none; transition: opacity 1.5s ease; }
     body.outside-mode .outside-scenery { opacity: 1; pointer-events: auto; }
@@ -101,18 +104,18 @@
     .interactive-item { cursor: pointer; transition: transform 0.1s ease; }
     .interactive-item:hover { transform: scale(1.04); }
 
-    /* Left Side Door */
-    .door { position: absolute; bottom: 32%; left: 8%; width: 50px; height: 105px; background: #5d4037; border: 4px solid #3e2723; z-index: 5; }
+    /* Right Side Door */
+    .door { position: absolute; bottom: 32%; right: 12%; width: 50px; height: 105px; background: #5d4037; border: 4px solid #3e2723; z-index: 5; }
     .door-top-panel { position: absolute; top: 6px; left: 6px; right: 6px; height: 38px; border: 2px solid #4e342e; }
     .door-bottom-panel { position: absolute; bottom: 6px; left: 6px; right: 6px; height: 38px; border: 2px solid #4e342e; }
-    .door-knob { position: absolute; top: 50%; right: 6px; width: 6px; height: 6px; background: #ffca28; border-radius: 50%; box-shadow: 1px 1px 0px #3e2723; transform: translateY(-50%); }
+    .door-knob { position: absolute; top: 50%; left: 6px; width: 6px; height: 6px; background: #ffca28; border-radius: 50%; box-shadow: 1px 1px 0px #3e2723; transform: translateY(-50%); }
 
-    /* Image Guitar on Wall */
-    .guitar-container { position: absolute; bottom: 42%; left: 30%; z-index: 5; }
-    .guitar-img { height: 120px; width: auto; display: block; image-rendering: pixelated; transform: rotate(0deg); }
+    /* Left Side Guitar */
+    .guitar-container { position: absolute; bottom: 42%; left: 10%; z-index: 5; }
+    .guitar-img { height: 65px; width: auto; display: block; image-rendering: pixelated; transform: rotate(15deg); }
 
-    /* Window */
-    .pixel-window { position: absolute; bottom: 45%; right: 20%; width: 64px; height: 84px; background: #0b1021; border: 4px solid #4a3b32; box-shadow: inset 0 0 10px rgba(0,0,0,0.6), 2px 2px 0px rgba(0,0,0,0.1); overflow: hidden; z-index: 5; }
+    /* Smaller Window */
+    .pixel-window { position: absolute; bottom: 45%; right: 25%; width: 48px; height: 64px; background: #0b1021; border: 3px solid #4a3b32; box-shadow: inset 0 0 10px rgba(0,0,0,0.6), 2px 2px 0px rgba(0,0,0,0.1); overflow: hidden; z-index: 5; }
     .pixel-window::before { content: ''; position: absolute; top: 50%; left: 0; width: 100%; height: 4px; background: #4a3b32; transform: translateY(-50%); z-index: 2; }
     .pixel-window::after { content: ''; position: absolute; top: 0; left: 50%; width: 4px; height: 100%; background: #4a3b32; transform: translateX(-50%); z-index: 2; }
     .window-grass { position: absolute; bottom: 0; left: 0; width: 100%; height: 18px; background: #143019; border-top: 2px solid #1c4423; z-index: 1; }
@@ -121,16 +124,21 @@
     .star-1 { top: 10px; left: 12px; animation-delay: 0s; } .star-2 { top: 20px; left: 40px; animation-delay: 0.7s; width: 3px; height: 3px; }
     .star-3 { top: 55px; left: 15px; animation-delay: 1.2s; } .star-4 { top: 65px; left: 45px; animation-delay: 0.3s; }
 
-    /* FLOOR ITEMS */
-    .gift-box-container { position: absolute; bottom: 18%; left: 12%; z-index: 12; }
-    .gift-box { width: 28px; height: 28px; background: #4fc3f7; border: 3px solid #0277bd; position: relative; }
+    /* Bed with Gift and Cat */
+    .bed-container { position: absolute; bottom: 18%; left: 8%; z-index: 12; display: flex; flex-direction: column; align-items: center; }
+    .bed-frame { width: 110px; height: 50px; background: #d7ccc8; border: 3px solid #4a3b32; position: relative; }
+    .bed-cover { position: absolute; top: 8px; left: 4px; right: 4px; bottom: 4px; background: #f48fb1; border-radius: 4px; background-image: radial-gradient(#ffffff 20%, transparent 20%); background-size: 12px 12px; }
+    .bed-items { position: absolute; top: -16px; left: 0; width: 100%; display: flex; justify-content: space-around; align-items: flex-end; padding: 0 10px; z-index: 13; }
+
+    /* Pink Gift Box */
+    .gift-box { width: 28px; height: 28px; background: #f06292; border: 3px solid #ad1457; position: relative; }
     .gift-ribbon-v { position: absolute; left: 8px; top: 0; width: 6px; height: 100%; background: #ffeb3b; border-left: 2px solid #fbc02d; border-right: 2px solid #fbc02d; }
     .gift-ribbon-h { position: absolute; top: 8px; left: 0; width: 100%; height: 6px; background: #ffeb3b; border-top: 2px solid #fbc02d; border-bottom: 2px solid #fbc02d; }
-    .gift-lid { position: absolute; top: -6px; left: -4px; width: 30px; height: 8px; background: #4fc3f7; border: 3px solid #0277bd; z-index: 2; transition: transform 0.2s ease, opacity 0.2s ease; }
+    .gift-lid { position: absolute; top: -6px; left: -4px; width: 30px; height: 8px; background: #f06292; border: 3px solid #ad1457; z-index: 2; transition: transform 0.2s ease, opacity 0.2s ease; }
     #gift.open .gift-lid { transform: translateY(-15px) rotate(20deg); opacity: 0; }
 
-    .cat-container { position: absolute; bottom: 18%; left: 24%; z-index: 12; }
-    .cat-img { height: 100px; width: auto; display: block; image-rendering: pixelated; }
+    .cat-container { }
+    .cat-img { height: 32px; width: auto; display: block; image-rendering: pixelated; }
 
     /* Couple */
     .couple-position { position: absolute; bottom: 18%; left: 50%; transform: translateX(-50%); z-index: 12; animation: idleBob 1.4s ease-in-out infinite alternate; transition: left 1.5s ease; }
@@ -145,7 +153,7 @@
     
     .cake-container { width: 72px; height: 44px; background: linear-gradient(to bottom, #4e342e 0%, #4e342e 30%, #3e2723 30%, #3e2723 70%, #2b1a17 70%, #2b1a17 100%); border: 3px solid #1f0000; border-radius: 6px; border-bottom: 5px solid #cfd8dc; position: relative; display: flex; justify-content: center; box-shadow: 0px 2px 0px rgba(0,0,0,0.2); }
     .cake-frosting { position: absolute; top: 0; left: 0; width: 100%; height: 14px; background: #271300; border-radius: 4px 4px 0 0; border-bottom: 3px dotted #180900; }
-    .cake-container::before { content: ''; position: absolute; width: 4px; height: 4px; background: #ffca28; top: 18px; left: 10px; box-shadow: 18px 6px 0 #a1887f, 36px -2px 0 #ffca28, 10px 10px 0 #ffca28, 28px 12px 0 #a1887f, 46px 2px 0 #ffca28; z-index: 1; }
+    .cake-container::before { content: ''; position: absolute; width: 4px; height: 4px; background: #ffca28; top: 18px; left: 10px; box-shadow: 18px 6px 0 #a1887f, 36px -2px 0 #ffca28, 10px 10px 0 #ffca28, 28px 12px 0 #a1887f, 46px 2px 0 #00e5ff; z-index: 1; }
     .candle { position: absolute; top: -14px; width: 6px; height: 14px; background: #81d4fa; border: 2px solid #000000; z-index: 2; }
     .candle-1 { left: 20px; } .candle-2 { right: 20px; }
     .flame { position: absolute; top: -9px; left: -2px; width: 6px; height: 8px; background: #ffeb3b; border: 1px solid #ff5722; animation: flicker 0.3s infinite alternate; }
@@ -180,23 +188,22 @@
     
     <div class="grass-hill">
       <div class="deco-flower" style="top: 20px; left: 10%; --flower-color: #ffffff;"></div>
-      <div class="deco-flower" style="top: 10px; left: 25%; --flower-color: #ff4081;"></div>
+      <div class="deco-flower" style="top: 40px; left: 25%; --flower-color: #ff4081;"></div>
       <div class="deco-flower" style="top: 15px; left: 35%; --flower-color: #4fc3f7;"></div>
       <div class="deco-flower" style="top: 50px; left: 45%; --flower-color: #ff7043;"></div>
       <div class="deco-flower" style="top: 25px; left: 55%; --flower-color: #ab47bc;"></div>
-      <div class="deco-flower" style="top: 15px; left: 70%; --flower-color: #ffffff;"></div>
+      <div class="deco-flower" style="top: 35px; left: 70%; --flower-color: #ffffff;"></div>
       <div class="deco-flower" style="top: 15px; left: 85%; --flower-color: #4fc3f7;"></div>
       <div class="deco-flower" style="top: 40px; left: 90%; --flower-color: #ff4081;"></div>
-      <!-- New Flowers -->
-      <div class="deco-flower" style="top: 30px; left: 18%; --flower-color: #fff176;"></div> <!-- Yellow -->
-      <div class="deco-flower" style="top: 10px; left: 40%; --flower-color: #e040fb;"></div> <!-- Purple -->
-      <div class="deco-flower" style="top: 45px; left: 60%; --flower-color: #ffffff;"></div> <!-- White -->
-      <div class="deco-flower" style="top: 20px; left: 80%; --flower-color: #ffca28;"></div> <!-- Gold -->
-      <div class="deco-flower" style="top: 35px; left: 95%; --flower-color: #ff4081;"></div> <!-- Pink -->
+      <div class="deco-flower" style="top: 30px; left: 18%; --flower-color: #fff176;"></div>
+      <div class="deco-flower" style="top: 10px; left: 40%; --flower-color: #e040fb;"></div>
+      <div class="deco-flower" style="top: 45px; left: 60%; --flower-color: #ffffff;"></div>
+      <div class="deco-flower" style="top: 20px; left: 80%; --flower-color: #ffca28;"></div>
+      <div class="deco-flower" style="top: 35px; left: 95%; --flower-color: #ff4081;"></div>
       
       <div class="deco-grass" style="top: 15px; left: 15%;"></div>
       <div class="deco-grass" style="top: 35px; left: 30%;"></div>
-      <div class="deco-grass" style="top: 15px; left: 50%;"></div>
+      <div class="deco-grass" style="top: 10px; left: 50%;"></div>
       <div class="deco-grass" style="top: 45px; left: 65%;"></div>
       <div class="deco-grass" style="top: 25px; left: 80%;"></div>
       <div class="deco-grass" style="top: 35px; left: 95%;"></div>
@@ -231,6 +238,8 @@
     </div>
   </div>
 
+  <div class="room-trim fade-item"></div>
+
   <div class="door fade-item interactive-item" onclick="goOutside()">
     <div class="door-top-panel"></div>
     <div class="door-bottom-panel"></div>
@@ -249,16 +258,20 @@
     <div class="window-grass"></div>
   </div>
 
-  <div class="gift-box-container fade-item interactive-item" id="gift" onclick="interactGift()">
-    <div class="gift-box">
-      <div class="gift-lid"></div>
-      <div class="gift-ribbon-v"></div>
-      <div class="gift-ribbon-h"></div>
+  <div class="bed-container fade-item">
+    <div class="bed-items">
+      <div class="gift-box interactive-item" id="gift" onclick="interactGift()">
+        <div class="gift-lid"></div>
+        <div class="gift-ribbon-v"></div>
+        <div class="gift-ribbon-h"></div>
+      </div>
+      <div class="cat-container interactive-item" onclick="interactCat()">
+        <img src="assets/cat.png" alt="Cat" class="cat-img" />
+      </div>
     </div>
-  </div>
-
-  <div class="cat-container fade-item interactive-item" onclick="interactCat()">
-    <img src="assets/cat.png" alt="Cat" class="cat-img" />
+    <div class="bed-frame">
+      <div class="bed-cover"></div>
+    </div>
   </div>
 
   <div class="couple-position interactive-item" onclick="interactCouple()">
@@ -432,7 +445,7 @@
   resizeCanvas();
 
   function addParticle(type) {
-    const colors = ["#ff4081", "#e040fb", "#ffd700", "#69f0ae", "#64b5f6"];
+    const colors = ["#ff4081", "#f06292", "#f48fb1", "#ff80ab", "#e91e63"];
     particles.push({
       x: Math.random() * canvas.width,
       y: canvas.height + 10,
@@ -457,16 +470,15 @@
       p.x += p.speedX;
 
       ctx.fillStyle = p.color;
-      if (p.type === "heart") {
-        ctx.fillRect(p.x, p.y, p.size, p.size);
-        ctx.fillRect(p.x - p.size, p.y - p.size, p.size, p.size);
-        ctx.fillRect(p.x + p.size, p.y - p.size, p.size, p.size);
-      } else if (p.type === "note") {
-        ctx.fillRect(p.x, p.y, p.size, p.size);
-        ctx.fillRect(p.x + p.size - 1, p.y - p.size * 2, 2, p.size * 2);
-      } else {
-        ctx.fillRect(p.x, p.y, p.size, p.size);
-      }
+      // Render all celebration effects as pink pixel hearts
+      ctx.fillRect(p.x, p.y, p.size, p.size);
+      ctx.fillRect(p.x - p.size, p.y - p.size, p.size, p.size);
+      ctx.fillRect(p.x + p.size, p.y - p.size, p.size, p.size);
+      ctx.fillRect(p.x - p.size * 2, p.y, p.size, p.size);
+      ctx.fillRect(p.x + p.size * 2, p.y, p.size, p.size);
+      ctx.fillRect(p.x - p.size, p.y + p.size, p.size, p.size);
+      ctx.fillRect(p.x + p.size, p.y + p.size, p.size, p.size);
+      ctx.fillRect(p.x, p.y + p.size * 2, p.size, p.size);
 
       if (p.y < -20) {
         particles.splice(i, 1);
