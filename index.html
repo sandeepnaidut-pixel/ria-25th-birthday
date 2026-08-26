@@ -124,14 +124,13 @@
     .star-1 { top: 10px; left: 12px; animation-delay: 0s; } .star-2 { top: 20px; left: 40px; animation-delay: 0.7s; width: 3px; height: 3px; }
     .star-3 { top: 55px; left: 15px; animation-delay: 1.2s; } .star-4 { top: 65px; left: 45px; animation-delay: 0.3s; }
 
-    /* Bed PNG Container with Gift and Cat */
+    /* Bed PNG Container with Cat */
     .bed-container {
       position: absolute;
-      bottom: 18%;
-      left: 6%;
-      width: 120px;
+      bottom: 16%;
+      left: 2%;
+      width: 155px;
       z-index: 12;
-      position: absolute;
     }
 
     .bed-img {
@@ -143,25 +142,17 @@
 
     .bed-items {
       position: absolute;
-      top: -12px;
+      top: 15px;
       left: 0;
       width: 100%;
       display: flex;
-      justify-content: space-around;
-      align-items: flex-end;
-      padding: 0 8px;
+      justify-content: center;
+      align-items: center;
       z-index: 13;
     }
 
-    /* Pink Gift Box */
-    .gift-box { width: 24px; height: 24px; background: #f06292; border: 3px solid #ad1457; position: relative; }
-    .gift-ribbon-v { position: absolute; left: 8px; top: 0; width: 5px; height: 100%; background: #ffeb3b; border-left: 1px solid #fbc02d; border-right: 1px solid #fbc02d; }
-    .gift-ribbon-h { position: absolute; top: 8px; left: 0; width: 100%; height: 5px; background: #ffeb3b; border-top: 1px solid #fbc02d; border-bottom: 1px solid #fbc02d; }
-    .gift-lid { position: absolute; top: -5px; left: -3px; width: 24px; height: 7px; background: #f06292; border: 3px solid #ad1457; z-index: 2; transition: transform 0.2s ease, opacity 0.2s ease; }
-    #gift.open .gift-lid { transform: translateY(-15px) rotate(20deg); opacity: 0; }
-
     .cat-container { }
-    .cat-img { height: 48px; width: auto; display: block; image-rendering: pixelated; }
+    .cat-img { height: 42px; width: auto; display: block; image-rendering: pixelated; }
 
     /* Couple */
     .couple-position { position: absolute; bottom: 18%; left: 50%; transform: translateX(-50%); z-index: 12; animation: idleBob 1.4s ease-in-out infinite alternate; transition: left 1.5s ease; }
@@ -281,14 +272,9 @@
     <div class="window-grass"></div>
   </div>
 
-  <!-- Bed Container with Gift and Cat -->
+  <!-- Bed Container with Cat Only -->
   <div class="bed-container fade-item">
     <div class="bed-items">
-      <div class="gift-box interactive-item" id="gift" onclick="interactGift()">
-        <div class="gift-lid"></div>
-        <div class="gift-ribbon-v"></div>
-        <div class="gift-ribbon-h"></div>
-      </div>
       <div class="cat-container interactive-item" onclick="interactCat()">
         <img src="assets/cat.png" alt="Cat" class="cat-img" />
       </div>
