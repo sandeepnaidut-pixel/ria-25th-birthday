@@ -84,6 +84,50 @@
       box-shadow: 0px 0px 0px #000000;
     }
 
+    /* Banner */
+    .banner-container {
+      position: absolute;
+      top: 65px;
+      left: 0;
+      width: 100%;
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      pointer-events: none;
+    }
+
+    .banner-row {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .pennant {
+      width: 26px;
+      height: 30px;
+      background: #ffffff;
+      border: 3px solid #4a3b32;
+      color: #e91e63;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 14px;
+      box-shadow: 2px 2px 0px rgba(0,0,0,0.15);
+    }
+
+    /* Staggered rotation to look handmade */
+    .banner-row:nth-child(1) .pennant:nth-child(odd) { transform: translateY(2px) rotate(4deg); }
+    .banner-row:nth-child(1) .pennant:nth-child(even) { transform: translateY(-2px) rotate(-2deg); }
+    
+    .banner-row:nth-child(2) .pennant { font-size: 10px; width: 22px; height: 26px; }
+    .banner-row:nth-child(2) .pennant:nth-child(odd) { transform: translateY(-1px) rotate(-3deg); }
+    .banner-row:nth-child(2) .pennant:nth-child(even) { transform: translateY(1px) rotate(3deg); }
+    
+    .banner-row:nth-child(3) .pennant:nth-child(odd) { transform: translateY(2px) rotate(-2deg); }
+    .banner-row:nth-child(3) .pennant:nth-child(even) { transform: translateY(-2px) rotate(4deg); }
+
     /* Room Scene */
     .room-scene {
       position: relative;
@@ -290,6 +334,18 @@
   <div class="top-bar">
     <button class="pixel-btn" id="music-btn" onclick="toggleAudio()">Music: OFF</button>
     <button class="pixel-btn" onclick="triggerConfetti()">Celebrate</button>
+  </div>
+
+  <div class="banner-container">
+    <div class="banner-row">
+      <div class="pennant">H</div><div class="pennant">A</div><div class="pennant">P</div><div class="pennant">P</div><div class="pennant">Y</div>
+    </div>
+    <div class="banner-row">
+      <div class="pennant">2</div><div class="pennant">5</div><div class="pennant">T</div><div class="pennant">H</div>
+    </div>
+    <div class="banner-row">
+      <div class="pennant">B</div><div class="pennant">I</div><div class="pennant">R</div><div class="pennant">T</div><div class="pennant">H</div><div class="pennant">D</div><div class="pennant">A</div><div class="pennant">Y</div>
+    </div>
   </div>
 
   <div class="room-scene">
