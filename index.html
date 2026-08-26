@@ -63,7 +63,7 @@
     .sparkle::after { width: 2px; height: 100%; top: 0; left: 6px; }
 
     /* Separation Line Below Banner */
-    .room-trim { position: absolute; top: 165px; left: 0; width: 100%; height: 4px; background: #d7ccc8; border-top: 2px solid #bcaaa4; border-bottom: 2px solid #bcaaa4; z-index: 4; }
+    .room-trim { position: absolute; top: 210px; left: 0; width: 100%; height: 4px; background: #d7ccc8; border-top: 2px solid #bcaaa4; border-bottom: 2px solid #bcaaa4; z-index: 4; }
 
     /* Outside Elements */
     .outside-scenery { position: absolute; bottom: 0; left: 0; width: 100%; height: 100%; z-index: 2; opacity: 0; pointer-events: none; transition: opacity 1.5s ease; }
@@ -105,7 +105,7 @@
     .interactive-item:hover { transform: scale(1.04); }
 
     /* Right Side Door */
-    .door { position: absolute; bottom: 32%; right: 12%; width: 50px; height: 105px; background: #5d4037; border: 4px solid #3e2723; z-index: 5; }
+    .door { position: absolute; bottom: 32%; left: 30%; width: 50px; height: 105px; background: #5d4037; border: 4px solid #3e2723; z-index: 5; }
     .door-top-panel { position: absolute; top: 6px; left: 6px; right: 6px; height: 38px; border: 2px solid #4e342e; }
     .door-bottom-panel { position: absolute; bottom: 6px; left: 6px; right: 6px; height: 38px; border: 2px solid #4e342e; }
     .door-knob { position: absolute; top: 50%; left: 6px; width: 6px; height: 6px; background: #ffca28; border-radius: 50%; box-shadow: 1px 1px 0px #3e2723; transform: translateY(-50%); }
@@ -269,9 +269,7 @@
         <img src="assets/cat.png" alt="Cat" class="cat-img" />
       </div>
     </div>
-    <div class="bed-frame">
-      <div class="bed-cover"></div>
-    </div>
+    <img src="assets/bed.png" alt="Bed" class="bed-img" />
   </div>
 
   <div class="couple-position interactive-item" onclick="interactCouple()">
