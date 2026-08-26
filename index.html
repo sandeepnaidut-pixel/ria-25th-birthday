@@ -48,6 +48,25 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      transition: background 1.5s ease;
+    }
+
+    /* Outside Mode Styles */
+    body.outside-mode #game-container {
+      background: #060913;
+    }
+    
+    .fade-item {
+      transition: opacity 1s ease;
+    }
+    
+    body.outside-mode .fade-item {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    body.outside-mode .couple-img {
+      filter: drop-shadow(0 0 15px rgba(255,255,255,0.1)) brightness(0.65);
     }
 
     canvas#particles {
@@ -84,7 +103,7 @@
       box-shadow: 0px 0px 0px #000000;
     }
 
-    /* Banner */
+    /* Beautiful Banner */
     .banner-container {
       position: absolute;
       top: 65px;
@@ -107,25 +126,28 @@
     .pennant {
       width: 26px;
       height: 30px;
-      background: #ffffff;
-      border: 3px solid #4a3b32;
-      color: #e91e63;
+      background: #ff4081; /* Pink */
+      border: 2px solid #ffffff;
+      color: #ffffff;
       display: flex;
       justify-content: center;
       align-items: center;
       font-size: 14px;
+      text-shadow: 1px 1px 0px rgba(0,0,0,0.3);
       box-shadow: 2px 2px 0px rgba(0,0,0,0.15);
+      border-radius: 2px 2px 6px 6px;
     }
 
-    .banner-row:nth-child(1) .pennant:nth-child(odd) { transform: translateY(2px) rotate(4deg); }
-    .banner-row:nth-child(1) .pennant:nth-child(even) { transform: translateY(-2px) rotate(-2deg); }
+    /* Multi-colored pennants */
+    .banner-row:nth-child(1) .pennant:nth-child(odd) { background: #4fc3f7; transform: translateY(2px) rotate(4deg); }
+    .banner-row:nth-child(1) .pennant:nth-child(even) { background: #ffca28; transform: translateY(-2px) rotate(-2deg); }
     
     .banner-row:nth-child(2) .pennant { font-size: 10px; width: 22px; height: 26px; }
-    .banner-row:nth-child(2) .pennant:nth-child(odd) { transform: translateY(-1px) rotate(-3deg); }
-    .banner-row:nth-child(2) .pennant:nth-child(even) { transform: translateY(1px) rotate(3deg); }
+    .banner-row:nth-child(2) .pennant:nth-child(odd) { background: #66bb6a; transform: translateY(-1px) rotate(-3deg); }
+    .banner-row:nth-child(2) .pennant:nth-child(even) { background: #ab47bc; transform: translateY(1px) rotate(3deg); }
     
-    .banner-row:nth-child(3) .pennant:nth-child(odd) { transform: translateY(2px) rotate(-2deg); }
-    .banner-row:nth-child(3) .pennant:nth-child(even) { transform: translateY(-2px) rotate(4deg); }
+    .banner-row:nth-child(3) .pennant:nth-child(3n) { background: #26c6da; transform: translateY(2px) rotate(-2deg); }
+    .banner-row:nth-child(3) .pennant:nth-child(3n+1) { background: #ffa726; transform: translateY(-2px) rotate(4deg); }
 
     /* CSS Pixel Window */
     .pixel-window {
@@ -189,7 +211,7 @@
       justify-content: space-between;
       align-items: flex-end;
       padding: 0 14px 18px 14px;
-      gap: 8px;
+      gap: 6px;
     }
 
     .interactive-item {
@@ -200,6 +222,99 @@
 
     .interactive-item:hover {
       transform: scale(1.04);
+    }
+
+    /* Left Side Floor Items */
+    .left-items {
+      display: flex;
+      align-items: flex-end;
+      gap: 12px;
+      z-index: 5;
+      margin-bottom: -2px;
+    }
+
+    .guitar {
+      width: 20px;
+      height: 50px;
+      position: relative;
+      transform: rotate(-15deg);
+      margin-bottom: 4px;
+    }
+
+    .guitar-neck {
+      width: 4px;
+      height: 20px;
+      background: #5d4037;
+      margin: 0 auto;
+      border: 2px solid #3e2723;
+      border-bottom: none;
+    }
+
+    .guitar-body {
+      width: 20px;
+      height: 28px;
+      background: #d84315;
+      border: 2px solid #3e2723;
+      border-radius: 8px 8px 12px 12px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .sound-hole {
+      width: 6px;
+      height: 6px;
+      background: #121212;
+      border-radius: 50%;
+      margin-top: -6px;
+    }
+
+    .gift-box {
+      width: 28px;
+      height: 28px;
+      background: #4fc3f7;
+      border: 3px solid #0277bd;
+      position: relative;
+    }
+
+    .gift-ribbon-v {
+      position: absolute;
+      left: 8px;
+      top: 0;
+      width: 6px;
+      height: 100%;
+      background: #ffeb3b;
+      border-left: 2px solid #fbc02d;
+      border-right: 2px solid #fbc02d;
+    }
+
+    .gift-ribbon-h {
+      position: absolute;
+      top: 8px;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: #ffeb3b;
+      border-top: 2px solid #fbc02d;
+      border-bottom: 2px solid #fbc02d;
+    }
+
+    .gift-lid {
+      position: absolute;
+      top: -6px;
+      left: -4px;
+      width: 30px;
+      height: 8px;
+      background: #4fc3f7;
+      border: 3px solid #0277bd;
+      z-index: 2;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .gift-box.open .gift-lid {
+      transform: translateY(-15px) rotate(20deg);
+      opacity: 0;
     }
 
     /* Sprites */
@@ -214,6 +329,7 @@
       max-height: 270px;
       width: auto;
       display: block;
+      transition: filter 1s ease;
     }
 
     @keyframes idleBob {
@@ -241,19 +357,24 @@
       max-height: 120px;
       width: auto;
       display: block;
+      transform: translateY(12px); /* PULLS FLOWER DOWN PERFECTLY ON TABLE */
+      position: relative;
+      z-index: 2;
     }
 
-    /* Pixel Cake */
+    /* Prettier Pixel Cake */
     .cake-container {
       width: 72px;
       height: 44px;
-      background: #f8bbd0;
-      border: 3px solid #4a3b32;
-      border-radius: 4px;
+      background: linear-gradient(to bottom, #ff80ab 0%, #ff80ab 30%, #f48fb1 30%, #f48fb1 70%, #d81b60 70%, #d81b60 100%);
+      border: 3px solid #880e4f;
+      border-radius: 6px;
+      border-bottom: 5px solid #cfd8dc; /* Silver plate */
       position: relative;
       display: flex;
       justify-content: center;
       cursor: pointer;
+      box-shadow: 0px 2px 0px rgba(0,0,0,0.2);
     }
 
     .cake-frosting {
@@ -261,9 +382,21 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: 12px;
+      height: 14px;
       background: #ffffff;
-      border-bottom: 3px dashed #e91e63;
+      border-radius: 4px 4px 0 0;
+      border-bottom: 3px dotted #ff4081; /* Drippy look */
+    }
+
+    /* CSS Sprinkles */
+    .cake-container::before {
+      content: '';
+      position: absolute;
+      width: 4px; height: 4px;
+      background: #ffff00;
+      top: 18px; left: 10px;
+      box-shadow: 18px 6px 0 #00e5ff, 36px -2px 0 #76ff03, 10px 10px 0 #ffffff, 28px 12px 0 #ffff00, 46px 2px 0 #00e5ff;
+      z-index: 1;
     }
 
     .candle {
@@ -273,6 +406,7 @@
       height: 14px;
       background: #81d4fa;
       border: 2px solid #000000;
+      z-index: 2;
     }
 
     .candle-1 { left: 20px; }
@@ -297,7 +431,9 @@
       position: absolute;
       bottom: 4px;
       font-size: 10px;
-      color: #880e4f;
+      color: #ffffff;
+      text-shadow: 1px 1px 0 #880e4f;
+      z-index: 2;
     }
 
     .table-stand {
@@ -312,6 +448,32 @@
     @keyframes flicker {
       0% { transform: scale(1); }
       100% { transform: scale(1.2) translateY(-1px); }
+    }
+
+    /* The Door */
+    .door {
+      width: 46px;
+      height: 100px;
+      background: #5d4037;
+      border: 4px solid #3e2723;
+      border-bottom: none;
+      position: relative;
+      margin-bottom: -2px;
+    }
+
+    .door-panels {
+      position: absolute;
+      top: 8px; left: 6px; right: 6px; bottom: 8px;
+      border: 2px solid #4e342e;
+    }
+
+    .door-knob {
+      position: absolute;
+      top: 50%; right: 4px;
+      width: 6px; height: 6px;
+      background: #ffca28;
+      border-radius: 50%;
+      box-shadow: 1px 1px 0px #3e2723;
     }
 
     /* Dialogue Box */
@@ -386,10 +548,10 @@
 
   <div class="top-bar">
     <button class="pixel-btn" id="music-btn" onclick="toggleAudio()">Music: OFF</button>
-    <button class="pixel-btn" onclick="triggerConfetti()">Celebrate</button>
+    <button class="pixel-btn fade-item" onclick="triggerConfetti()">Celebrate</button>
   </div>
 
-  <div class="banner-container">
+  <div class="banner-container fade-item">
     <div class="banner-row">
       <div class="pennant">H</div><div class="pennant">A</div><div class="pennant">P</div><div class="pennant">P</div><div class="pennant">Y</div>
     </div>
@@ -401,8 +563,7 @@
     </div>
   </div>
 
-  <!-- The Animated Window -->
-  <div class="pixel-window interactive-item" onclick="interactWindow()">
+  <div class="pixel-window interactive-item fade-item" onclick="interactWindow()">
     <div class="star star-1"></div>
     <div class="star star-2"></div>
     <div class="star star-3"></div>
@@ -410,11 +571,24 @@
   </div>
 
   <div class="room-scene">
+    <div class="left-items fade-item">
+      <div class="guitar interactive-item" onclick="interactGuitar()">
+        <div class="guitar-neck"></div>
+        <div class="guitar-body"><div class="sound-hole"></div></div>
+      </div>
+      
+      <div class="gift-box interactive-item" id="gift" onclick="interactGift()">
+        <div class="gift-lid"></div>
+        <div class="gift-ribbon-v"></div>
+        <div class="gift-ribbon-h"></div>
+      </div>
+    </div>
+
     <div class="couple-wrapper interactive-item" onclick="interactCouple()">
       <img src="assets/couple.png" alt="San and Ria" class="couple-img" id="couple-sprite" />
     </div>
 
-    <div class="furniture-group">
+    <div class="furniture-group fade-item">
       <div class="table-top-items">
         <div class="interactive-item" onclick="interactFlowers()">
           <img src="assets/flowers.png" alt="Bouquet" class="vase-img" />
@@ -428,6 +602,12 @@
         </div>
       </div>
       <div class="table-stand"></div>
+    </div>
+
+    <!-- The Door to Outside -->
+    <div class="door interactive-item fade-item" onclick="goOutside()">
+      <div class="door-panels"></div>
+      <div class="door-knob"></div>
     </div>
   </div>
 
@@ -451,34 +631,18 @@
 
 <script>
   let candlesBlown = false;
+  let giftOpened = false;
+  let isOutside = false;
   let typingTimer = null;
 
   const script = {
-    intro: {
-      speaker: "San",
-      portrait: "assets/san.png",
-      text: "Happy 25th Birthday, Ria! Welcome to your room."
-    },
-    flowers: {
-      speaker: "San",
-      portrait: "assets/san.png",
-      text: "A fresh bouquet of blue lilies for your special day!"
-    },
-    cake: {
-      speaker: "Ria",
-      portrait: "assets/ria.png",
-      text: "Make a wish! 25 is going to be our best year yet."
-    },
-    couple: {
-      speaker: "San",
-      portrait: "assets/san.png",
-      text: "September 9th is all about you. I love you, Bebo <3"
-    },
-    window: {
-      speaker: "San",
-      portrait: "assets/san.png",
-      text: "Even with the miles between us, we share the same night sky."
-    }
+    intro: { speaker: "San", portrait: "assets/san.png", text: "Happy 25th Birthday, Ria! Welcome to your room." },
+    flowers: { speaker: "San", portrait: "assets/san.png", text: "A fresh bouquet of blue lilies for your special day!" },
+    cake: { speaker: "Ria", portrait: "assets/ria.png", text: "Make a wish! 25 is going to be our best year yet." },
+    couple: { speaker: "San", portrait: "assets/san.png", text: "September 9th is all about you. I love you, Bebo <3" },
+    window: { speaker: "San", portrait: "assets/san.png", text: "Even with the miles between us, we share the same night sky." },
+    guitar: { speaker: "San", portrait: "assets/san.png", text: "I keep thinking about the acoustic song I wrote for our second anniversary. Every lyric is still true today." },
+    gift: { speaker: "San", portrait: "assets/san.png", text: "I packed this one with just as much love as the care package with the cookies I sent for our anniversary." }
   };
 
   function typeText(speaker, portrait, text) {
@@ -501,17 +665,27 @@
   }
 
   function interactCouple() {
-    typeText(script.couple.speaker, script.couple.portrait, script.couple.text);
-    triggerHearts();
+    if (isOutside) {
+      goInside();
+    } else {
+      typeText(script.couple.speaker, script.couple.portrait, script.couple.text);
+      triggerHearts();
+    }
   }
 
-  function interactFlowers() {
-    typeText(script.flowers.speaker, script.flowers.portrait, script.flowers.text);
-    triggerPetals();
-  }
+  function interactFlowers() { typeText(script.flowers.speaker, script.flowers.portrait, script.flowers.text); triggerPetals(); }
+  function interactWindow() { typeText(script.window.speaker, script.window.portrait, script.window.text); }
+  function interactGuitar() { typeText(script.guitar.speaker, script.guitar.portrait, script.guitar.text); triggerNotes(); }
 
-  function interactWindow() {
-    typeText(script.window.speaker, script.window.portrait, script.window.text);
+  function interactGift() {
+    if (!giftOpened) {
+      document.getElementById("gift").classList.add("open");
+      giftOpened = true;
+      typeText(script.gift.speaker, script.gift.portrait, script.gift.text);
+      triggerConfetti();
+    } else {
+      typeText(script.gift.speaker, script.gift.portrait, "The gift is open! I hope you love it.");
+    }
   }
 
   function blowCandles() {
@@ -524,6 +698,20 @@
     } else {
       typeText(script.cake.speaker, script.cake.portrait, "The candles are out, but the wish is already set in stone!");
     }
+  }
+
+  function goOutside() {
+    isOutside = true;
+    document.body.classList.add("outside-mode");
+    typeText("San", "assets/san.png", "Just you, me, and the stars. (Tap us to go back inside)");
+    triggerNightSky();
+  }
+
+  function goInside() {
+    isOutside = false;
+    document.body.classList.remove("outside-mode");
+    particles = []; // Clear stars
+    typeText("Ria", "assets/ria.png", "Back in our cozy room!");
   }
 
   function advanceDialogue() {
@@ -543,7 +731,7 @@
     }
   }
 
-  /* Particle Canvas */
+  /* Particle Canvas Engine */
   const canvas = document.getElementById("particles");
   const ctx = canvas.getContext("2d");
   let particles = [];
@@ -568,21 +756,23 @@
     });
   }
 
-  function triggerConfetti() {
-    for (let i = 0; i < 40; i++) {
-      setTimeout(() => addParticle("square"), i * 20);
-    }
-  }
+  function triggerConfetti() { for (let i = 0; i < 40; i++) { setTimeout(() => addParticle("square"), i * 20); } }
+  function triggerHearts() { for (let i = 0; i < 20; i++) { setTimeout(() => addParticle("heart"), i * 30); } }
+  function triggerPetals() { for (let i = 0; i < 25; i++) { setTimeout(() => addParticle("petal"), i * 25); } }
+  function triggerNotes() { for (let i = 0; i < 15; i++) { setTimeout(() => addParticle("note"), i * 40); } }
 
-  function triggerHearts() {
-    for (let i = 0; i < 20; i++) {
-      setTimeout(() => addParticle("heart"), i * 30);
-    }
-  }
-
-  function triggerPetals() {
-    for (let i = 0; i < 25; i++) {
-      setTimeout(() => addParticle("petal"), i * 25);
+  function triggerNightSky() {
+    particles = [];
+    for (let i = 0; i < 120; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 2 + 1,
+        speedY: (Math.random() - 0.5) * 0.2, // Extremely slow drift
+        speedX: (Math.random() - 0.5) * 0.2,
+        color: Math.random() > 0.5 ? "#ffffff" : "#b3e5fc",
+        type: "star"
+      });
     }
   }
 
@@ -598,13 +788,24 @@
         ctx.fillRect(p.x, p.y, p.size, p.size);
         ctx.fillRect(p.x - p.size, p.y - p.size, p.size, p.size);
         ctx.fillRect(p.x + p.size, p.y - p.size, p.size, p.size);
+      } else if (p.type === "note") {
+        ctx.fillRect(p.x, p.y, p.size, p.size);
+        ctx.fillRect(p.x + p.size - 1, p.y - p.size * 2, 2, p.size * 2);
       } else {
         ctx.fillRect(p.x, p.y, p.size, p.size);
       }
 
-      if (p.y < -20) {
-        particles.splice(i, 1);
-        i--;
+      // Handle off-screen
+      if (p.type === "star") {
+        if (p.y < -10) p.y = canvas.height + 10;
+        if (p.y > canvas.height + 10) p.y = -10;
+        if (p.x < -10) p.x = canvas.width + 10;
+        if (p.x > canvas.width + 10) p.x = -10;
+      } else {
+        if (p.y < -20) {
+          particles.splice(i, 1);
+          i--;
+        }
       }
     }
     requestAnimationFrame(updateParticles);
