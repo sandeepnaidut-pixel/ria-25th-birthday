@@ -91,7 +91,7 @@
       box-shadow: 4px 2px #4caf50, -4px 4px #4caf50;
     }
 
-    .motorcycle { position: absolute; bottom: 25%; left: 8%; width: 90px; cursor: pointer; transition: transform 0.2s ease; z-index: 15; }
+    .motorcycle { position: absolute; bottom: 22%; right: 12%; width: 140px; cursor: pointer; transition: transform 0.2s ease; z-index: 15; }
     .motorcycle:hover { transform: scale(1.05); }
     .motorcycle img { width: 100%; height: auto; display: block; image-rendering: pixelated; }
 
@@ -133,7 +133,8 @@
     .cat-img { height: 32px; width: auto; display: block; image-rendering: pixelated; }
 
     /* Couple */
-    .couple-position { position: absolute; bottom: 18%; left: 50%; transform: translateX(-50%); z-index: 12; animation: idleBob 1.4s ease-in-out infinite alternate; }
+    .couple-position { position: absolute; bottom: 18%; left: 50%; transform: translateX(-50%); z-index: 12; animation: idleBob 1.4s ease-in-out infinite alternate; transition: left 1.5s ease; }
+    body.outside-mode .couple-position { left: 25%; }
     .couple-img { max-height: 240px; width: auto; display: block; transition: filter 1s ease; }
     @keyframes idleBob { 0% { transform: translateY(0); } 100% { transform: translateY(-4px); } }
 
@@ -178,15 +179,21 @@
     <div class="moon"></div>
     
     <div class="grass-hill">
-      <div class="deco-flower" style="top: 20px; left: 25%;"></div>
-      <div class="deco-flower" style="top: 40px; left: 55%; --flower-color: #ff4081;"></div>
-      <div class="deco-flower" style="top: 25px; left: 75%; --flower-color: #ab47bc;"></div>
-      <div class="deco-flower" style="top: 15px; left: 85%;"></div>
+      <div class="deco-flower" style="top: 20px; left: 10%; --flower-color: #ffffff;"></div>
+      <div class="deco-flower" style="top: 40px; left: 25%; --flower-color: #ff4081;"></div>
+      <div class="deco-flower" style="top: 15px; left: 35%; --flower-color: #4fc3f7;"></div>
+      <div class="deco-flower" style="top: 50px; left: 45%; --flower-color: #ff7043;"></div>
+      <div class="deco-flower" style="top: 25px; left: 55%; --flower-color: #ab47bc;"></div>
+      <div class="deco-flower" style="top: 35px; left: 70%; --flower-color: #ffffff;"></div>
+      <div class="deco-flower" style="top: 15px; left: 85%; --flower-color: #4fc3f7;"></div>
+      <div class="deco-flower" style="top: 40px; left: 90%; --flower-color: #ff4081;"></div>
       
       <div class="deco-grass" style="top: 15px; left: 15%;"></div>
-      <div class="deco-grass" style="top: 35px; left: 35%;"></div>
-      <div class="deco-grass" style="top: 10px; left: 65%;"></div>
-      <div class="deco-grass" style="top: 45px; left: 85%;"></div>
+      <div class="deco-grass" style="top: 35px; left: 30%;"></div>
+      <div class="deco-grass" style="top: 10px; left: 50%;"></div>
+      <div class="deco-grass" style="top: 45px; left: 65%;"></div>
+      <div class="deco-grass" style="top: 25px; left: 80%;"></div>
+      <div class="deco-grass" style="top: 35px; left: 95%;"></div>
     </div>
     
     <div class="motorcycle" onclick="goInside()">
