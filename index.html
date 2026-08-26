@@ -27,7 +27,7 @@
     }
 
     body {
-      background-color: #1a1a1a;
+      background-color: #121212;
       font-family: 'Press Start 2P', monospace;
       display: flex;
       justify-content: center;
@@ -39,9 +39,9 @@
     #game-container {
       position: relative;
       width: 100vw;
-      max-width: 480px;
+      max-width: 440px;
       height: 100vh;
-      max-height: 850px;
+      max-height: 820px;
       background: linear-gradient(to bottom, var(--bg-wall) 68%, var(--bg-floor) 68%);
       border: 4px solid #4a3b32;
       overflow: hidden;
@@ -89,9 +89,10 @@
       position: relative;
       flex: 1;
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
       align-items: flex-end;
-      padding-bottom: 24px;
+      padding: 0 14px 18px 14px;
+      gap: 8px;
     }
 
     .interactive-item {
@@ -101,17 +102,19 @@
     }
 
     .interactive-item:hover {
-      transform: scale(1.05);
+      transform: scale(1.04);
     }
 
     /* Sprites */
     .couple-wrapper {
+      flex: 0 0 auto;
       text-align: center;
       animation: idleBob 1.4s ease-in-out infinite alternate;
+      z-index: 5;
     }
 
     .couple-img {
-      max-height: 320px;
+      max-height: 270px;
       width: auto;
       display: block;
     }
@@ -121,24 +124,34 @@
       100% { transform: translateY(-4px); }
     }
 
-    .table-set {
+    /* Furniture & Side Table */
+    .furniture-group {
       display: flex;
       flex-direction: column;
       align-items: center;
+      flex: 0 0 auto;
+      z-index: 5;
+    }
+
+    .table-top-items {
+      display: flex;
+      align-items: flex-end;
       gap: 8px;
+      margin-bottom: -2px;
     }
 
     .vase-img {
-      max-height: 130px;
+      max-height: 120px;
       width: auto;
+      display: block;
     }
 
     /* Pixel Cake */
     .cake-container {
-      width: 80px;
-      height: 50px;
+      width: 72px;
+      height: 44px;
       background: #f8bbd0;
-      border: 4px solid #4a3b32;
+      border: 3px solid #4a3b32;
       border-radius: 4px;
       position: relative;
       display: flex;
@@ -151,26 +164,26 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: 14px;
+      height: 12px;
       background: #ffffff;
       border-bottom: 3px dashed #e91e63;
     }
 
     .candle {
       position: absolute;
-      top: -16px;
+      top: -14px;
       width: 6px;
-      height: 16px;
+      height: 14px;
       background: #81d4fa;
       border: 2px solid #000000;
     }
 
-    .candle-1 { left: 24px; }
-    .candle-2 { right: 24px; }
+    .candle-1 { left: 20px; }
+    .candle-2 { right: 20px; }
 
     .flame {
       position: absolute;
-      top: -10px;
+      top: -9px;
       left: -2px;
       width: 6px;
       height: 8px;
@@ -185,9 +198,18 @@
 
     .cake-label {
       position: absolute;
-      bottom: 6px;
-      font-size: 11px;
+      bottom: 4px;
+      font-size: 10px;
       color: #880e4f;
+    }
+
+    .table-stand {
+      width: 150px;
+      height: 48px;
+      background: #bcaaa4;
+      border: 3px solid #4a3b32;
+      border-top: 5px solid #8d6e63;
+      border-radius: 2px;
     }
 
     @keyframes flicker {
@@ -207,14 +229,14 @@
       border-radius: 6px;
       display: flex;
       gap: 12px;
-      padding: 12px;
-      min-height: 110px;
+      padding: 10px;
+      min-height: 100px;
       box-shadow: 0 4px 0 #000;
     }
 
     .portrait {
-      width: 64px;
-      height: 64px;
+      width: 60px;
+      height: 60px;
       border: 2px solid #ffffff;
       background: #000;
       flex-shrink: 0;
@@ -245,6 +267,7 @@
       font-size: 9px;
       line-height: 1.6;
       white-space: pre-wrap;
+      word-break: break-word;
     }
 
     .dialogue-prompt {
@@ -274,17 +297,20 @@
       <img src="assets/couple.png" alt="San and Ria" class="couple-img" id="couple-sprite" />
     </div>
 
-    <div class="table-set">
-      <div class="interactive-item" onclick="interactFlowers()">
-        <img src="assets/flowers.png" alt="Bouquet" class="vase-img" />
-      </div>
+    <div class="furniture-group">
+      <div class="table-top-items">
+        <div class="interactive-item" onclick="interactFlowers()">
+          <img src="assets/flowers.png" alt="Bouquet" class="vase-img" />
+        </div>
 
-      <div class="cake-container" onclick="blowCandles()">
-        <div class="candle candle-1"><div class="flame" id="flame1"></div></div>
-        <div class="candle candle-2"><div class="flame" id="flame2"></div></div>
-        <div class="cake-frosting"></div>
-        <span class="cake-label">25</span>
+        <div class="cake-container interactive-item" onclick="blowCandles()">
+          <div class="candle candle-1"><div class="flame" id="flame1"></div></div>
+          <div class="candle candle-2"><div class="flame" id="flame2"></div></div>
+          <div class="cake-frosting"></div>
+          <span class="cake-label">25</span>
+        </div>
       </div>
+      <div class="table-stand"></div>
     </div>
   </div>
 
@@ -308,7 +334,6 @@
 
 <script>
   let candlesBlown = false;
-  let textIndex = 0;
   let typingTimer = null;
 
   const script = {
@@ -320,7 +345,7 @@
     flowers: {
       speaker: "San",
       portrait: "assets/san.png",
-      text: "A fresh bouquet of your favorite to brighten your 25th!"
+      text: "A fresh bouquet of blue lilies for your special day!"
     },
     cake: {
       speaker: "Ria",
@@ -330,24 +355,24 @@
     couple: {
       speaker: "San",
       portrait: "assets/san.png",
-      text: "Today is all about you. I love you, Bebo <3"
+      text: "September 9th is all about you. I love you, Bebo <3"
     }
   };
 
   function typeText(speaker, portrait, text) {
     clearTimeout(typingTimer);
-    document.getElementById("speaker-name").innerText = speaker;
+    document.getElementById("speaker-name").textContent = speaker;
     document.getElementById("portrait-img").src = portrait;
     
     const textElem = document.getElementById("dialogue-text");
-    textElem.innerText = "";
+    textElem.textContent = "";
     let i = 0;
 
     function step() {
-      if (i < text.length) {
-        textElem.innerText += text.charAt(i);
+      if (i <= text.length) {
+        textElem.textContent = text.slice(0, i);
         i++;
-        typingTimer = setTimeout(step, 35);
+        typingTimer = setTimeout(step, 30);
       }
     }
     step();
@@ -392,7 +417,7 @@
     }
   }
 
-  /* Particle Engine */
+  /* Particle Canvas */
   const canvas = document.getElementById("particles");
   const ctx = canvas.getContext("2d");
   let particles = [];
@@ -405,7 +430,7 @@
   resizeCanvas();
 
   function addParticle(type) {
-    const colors = ["#ff4081", "#e040fb", "#ffd700", "#69f0ae", "#ffffff"];
+    const colors = ["#ff4081", "#e040fb", "#ffd700", "#69f0ae", "#64b5f6"];
     particles.push({
       x: Math.random() * canvas.width,
       y: canvas.height + 10,
